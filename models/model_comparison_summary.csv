@@ -1,5 +1,5 @@
 Model,MAE,RMSE,R2,file
-RandomForestRegressor,2530.361637385741,4621.2024431755435,0.8624432430744645,random_forest_regressor_metrics.csv
+RandomForestRegressor,2530.361637385741,4621.202443175544,0.8624432430744645,random_forest_regressor_metrics.csv
 xgboost_regressor,2533.3870269217,4668.616146816961,0.8596060881342853,xgboost_regressor_metrics.csv
 LinearRegression,4181.19447375364,5796.2846592762735,0.7835929767120723,linear_regression_metrics.csv
 DecisionTreeRegressor,2939.7278362910447,6152.849170489415,0.7561490354798918,decision_tree_regressor_metrics.csv
