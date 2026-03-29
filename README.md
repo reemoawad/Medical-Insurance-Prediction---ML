@@ -89,17 +89,6 @@ Medical-Insurance-Prediction---ML/
 
 ---
 
-## My Contributions *(Reem Awad)*
-
-- Built and maintained the **end-to-end ML training pipeline** across all five algorithms
-- Designed the **model evaluation and selection logic** in `compare_models.ipynb`, including automated best-model persistence
-- Developed and deployed the **Streamlit web application**, including real-time prediction logic and UI layout
-- Conducted **exploratory data analysis** (distributions, feature correlations, charge skew investigation)
-- Owned the **repository structure and code organization** across training, evaluation, and deployment stages
-- Collaborated with teammates on dataset preprocessing and feature engineering decisions
-
----
-
 ## Setup & Usage
 
 **1. Clone and set up the environment**
