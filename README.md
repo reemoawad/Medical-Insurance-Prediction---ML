@@ -1,6 +1,6 @@
 # Medical Insurance Cost Prediction
 
-> A full end-to-end machine learning system that predicts annual medical insurance charges from patient demographics — built with a reproducible training pipeline, multi-model benchmarking, and a deployed interactive web application.
+> End-to-end machine learning system for predicting medical insurance costs from patient demographics, with model benchmarking and a deployed interactive web app.
 
 ---
 
@@ -8,13 +8,22 @@
 
 | Model | R² Score | RMSE (USD) |
 |---|---|---|
-| Random Forest *(best)* | 0.86 | $4,620 |
+| Random Forest **(Best Model)** | 0.86 | $4,620 |
 | XGBoost | 0.86 | $4,670 |
 | Linear Regression | 0.79 | $5,800 |
 | Decision Tree | 0.76 | $6,150 |
 | KNN | 0.30 | $10,400 |
 
 Random Forest achieved the strongest overall performance with the lowest RMSE and highest R², and was selected as the final model for deployment, with XGBoost performing comparably.
+
+---
+
+## Highlights
+
+- Built an end-to-end ML pipeline from preprocessing to deployment
+- Benchmarked 5 regression models to identify optimal performance
+- Achieved R² of 0.86 using ensemble methods (Random Forest, XGBoost)
+- Deployed an interactive Streamlit app for real-time predictions
 
 ---
 
@@ -26,7 +35,11 @@ Random Forest achieved the strongest overall performance with the lowest RMSE an
 
 ## Tech Stack
 
-`Python` `scikit-learn` `XGBoost` `pandas` `NumPy` `Streamlit` `Jupyter` `joblib` `Matplotlib` `Seaborn`
+**Machine Learning:** scikit-learn, XGBoost  
+**Data Processing:** pandas, NumPy  
+**Visualization:** Matplotlib, Seaborn  
+**Deployment:** Streamlit  
+**Tools:** Python, Jupyter, joblib
 
 ---
 
@@ -57,14 +70,14 @@ Streamlit Deployment
 
 ## Streamlit App
 
-The web app loads the best-trained model automatically and provides a clean interface for real-time cost prediction.
+The web app automatically loads the best-performing model and provides a clean, interactive interface for real-time insurance cost prediction.
 
 **Inputs:** age, BMI, number of dependents, sex, smoker status, region  
 **Features:**
-- Preset patient profile options for quick exploration
-- Real-time insurance charge prediction on input change
-- Displays live model performance metrics (R², RMSE)
-- Custom UI theme via Streamlit config
+- Preset patient profiles for quick exploration
+- Real-time insurance cost prediction on input change
+- Displays model performance metrics (R², RMSE) for transparency
+- Custom UI styling via Streamlit configuration
 
 ---
 
@@ -128,7 +141,7 @@ streamlit run app.py
 ## Dataset
 
 [Medical Insurance Personal Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance) — Kaggle  
-1,338 records · 7 features: age, sex, BMI, children, smoker, region, charges
+1,338 records with 7 features: age, sex, BMI, children, smoker status, region, and charges
 
 ---
 
