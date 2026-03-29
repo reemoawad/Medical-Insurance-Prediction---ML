@@ -1,112 +1,152 @@
-COMPE 510 — Medical Insurance Cost Prediction
+# Medical Insurance Cost Prediction
 
-Final Project — Fall 2025
+> A full end-to-end machine learning system that predicts annual medical insurance charges from patient demographics — built with a reproducible training pipeline, multi-model benchmarking, and a deployed interactive web application.
 
-Authors: Abdulmohsen Almunayes, Reem Awad, Tri Bui
+---
 
-Project Description
+## Key Results
 
-This project uses machine learning to predict annual medical insurance charges using the Medical Insurance Personal Dataset from Kaggle.
-We explore exploratory data analysis (EDA), train five regression algorithms, compare their performance, and deploy the best model using a Streamlit web app.
+| Model | R² Score | RMSE |
+|---|---|---|
+| XGBoost *(best)* | — | lowest |
+| Random Forest | — | — |
+| Decision Tree | — | — |
+| Linear Regression | — | — |
+| KNN | — | — |
 
-Project Structure:
+> ⚠️ *Replace placeholders above with actual metrics from `models/model_comparison_summary.csv` after training.*
 
-insurance-ml-project/
-│
-├── algorithms/              # Training notebooks for each ML model
-│   ├── train_knn.ipynb
-│   ├── train_linear_regression.ipynb
-│   ├── train_decision_tree.ipynb
-│   ├── train_random_forest.ipynb
-│   ├── train_xgb.ipynb
-│   └── compare_models.ipynb
-│
-├── EDA/                     # Exploratory Data Analysis notebook + generated figures
-│   ├── insurance_eda.ipynb
-│   ├── numerical_distributions.png
-│   ├── categorical_vs_charges.png
-│   ├── correlation_matrix.png
-│   ├── charges_distribution.png
-│   └── (other EDA charts)
-│
-├── models/                  # Saved trained models + metrics
-│   ├── knn_regressor.joblib
-│   ├── linear_regression.joblib
-│   ├── decision_tree_regressor.joblib
-│   ├── random_forest_regressor.joblib
-│   ├── xgboost_regressor.joblib
-│   ├── *_metrics.csv
-│   ├── model_comparison_summary.csv
-│   └── best_model.txt       # Name of the best model (selected automatically)
-│
-├── app/                     # Streamlit web application
-│   └── app.py
-│
-├── streamlit/               # Optional UI theme
-│   └── config.toml
-│
-├── insurance.csv            # Dataset
-├── requirements.txt         # Python dependencies
-└── README.md                # (This file)
+The best-performing model is selected automatically at runtime and loaded directly into the Streamlit app via `models/best_model.txt`.
 
+---
 
-Setup Instructions
+## Demo
 
-1. Create & Activate the Virtual Environment
+> 📸 *Insert Streamlit app screenshot here*
 
-    python3 -m venv .venv
-    source .venv/bin/activate
+```
+[ screenshot placeholder ]
+```
 
-2. Install All Dependencies
+---
 
-    pip install -r requirements.txt
+## Tech Stack
 
+`Python` `scikit-learn` `XGBoost` `pandas` `NumPy` `Streamlit` `Jupyter` `joblib` `Matplotlib` `Seaborn`
 
-Running the Machine Learning Models:
+---
 
-Run them one by one:
+## Pipeline Overview
 
-	1.	train_linear_regression.ipynb
-	2.	train_decision_tree.ipynb
-	3.	train_knn.ipynb
-	4.	train_random_forest.ipynb
-	5.	train_xgb.ipynb
+```
+Dataset (Kaggle)
+    │
+    ▼
+Exploratory Data Analysis
+    │  distributions, correlations, outlier analysis
+    ▼
+Preprocessing
+    │  encoding, feature scaling, train/test split
+    ▼
+Model Training  (5 algorithms, individual notebooks)
+    │  Linear Regression · Decision Tree · KNN
+    │  Random Forest · XGBoost
+    ▼
+Evaluation & Model Selection
+    │  compare_models.ipynb → best_model.txt
+    ▼
+Streamlit Deployment
+       real-time predictions via interactive UI
+```
 
+---
 
+## Streamlit App
 
-Each notebook will automatically:
+The web app loads the best-trained model automatically and provides a clean interface for real-time cost prediction.
 
-	•	Preprocess the dataset
-	•	Train the model
-	•	Generate diagnostic figures
-	•	Save:
-	•	a .joblib model
-	•	a *_metrics.csv file
+**Inputs:** age, BMI, number of dependents, sex, smoker status, region  
+**Features:**
+- Preset patient profile options for quick exploration
+- Real-time insurance charge prediction on input change
+- Displays live model performance metrics (R², RMSE)
+- Custom UI theme via Streamlit config
 
+---
 
-After training all models, run:
+## Project Structure
 
-    algorithms/compare_models.ipynb
+```
+Medical-Insurance-Prediction---ML/
+├── algorithms/          # Training notebooks (one per model) + compare_models.ipynb
+├── EDA/                 # EDA notebook + generated figures (distributions, correlations)
+├── models/              # Serialized .joblib models, per-model metrics CSVs, best_model.txt
+├── app/                 # Streamlit application (app.py)
+├── streamlit/           # UI theme config
+├── insurance.csv        # Source dataset
+└── requirements.txt
+```
 
+---
 
-This notebook finds the best model (lowest RMSE) and writes its filename into:
+## My Contributions *(Reem Awad)*
 
-    models/best_model.txt
-    The Streamlit app reads this file automatically.
+- Built and maintained the **end-to-end ML training pipeline** across all five algorithms
+- Designed the **model evaluation and selection logic** in `compare_models.ipynb`, including automated best-model persistence
+- Developed and deployed the **Streamlit web application**, including real-time prediction logic and UI layout
+- Conducted **exploratory data analysis** (distributions, feature correlations, charge skew investigation)
+- Owned the **repository structure and code organization** across training, evaluation, and deployment stages
+- Collaborated with teammates on dataset preprocessing and feature engineering decisions
 
+---
 
-Running the Streamlit Application:
+## Setup & Usage
 
-    cd app
-    streamlit run app.py
+**1. Clone and set up the environment**
 
-    Features:
-	•	Automatically loads the best model
-	•	Clean modern UI
-	•	Inputs for age, BMI, children, sex, smoker, region
-	•	Preset profile options
-	•	Real-time charge predictions
-	•	Shows model performance metrics
+```bash
+git clone https://github.com/reemoawad/Medical-Insurance-Prediction---ML.git
+cd Medical-Insurance-Prediction---ML
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
+**2. Train the models**
 
+Run each notebook in `algorithms/` in any order:
 
+```
+train_linear_regression.ipynb
+train_decision_tree.ipynb
+train_knn.ipynb
+train_random_forest.ipynb
+train_xgb.ipynb
+```
+
+Each notebook preprocesses the data, trains the model, saves a `.joblib` file and a `*_metrics.csv` to `models/`.
+
+**3. Select the best model**
+
+```bash
+# Run algorithms/compare_models.ipynb
+# Outputs: models/best_model.txt (used automatically by the app)
+```
+
+**4. Launch the app**
+
+```bash
+cd app
+streamlit run app.py
+```
+
+---
+
+## Dataset
+
+[Medical Insurance Personal Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance) — Kaggle  
+1,338 records · 7 features: age, sex, BMI, children, smoker, region, charges
+
+---
+
+*Built by Abdulmohsen Almunayes, Reem Awad, and Tri Bui*
