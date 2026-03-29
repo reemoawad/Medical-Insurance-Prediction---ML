@@ -6,17 +6,15 @@
 
 ## Key Results
 
-| Model | R² Score | RMSE |
+| Model | R² Score | RMSE (USD) |
 |---|---|---|
-| XGBoost *(best)* | — | lowest |
-| Random Forest | — | — |
-| Decision Tree | — | — |
-| Linear Regression | — | — |
-| KNN | — | — |
+| Random Forest *(best)* | 0.86 | $4,620 |
+| XGBoost | 0.86 | $4,670 |
+| Linear Regression | 0.79 | $5,800 |
+| Decision Tree | 0.76 | $6,150 |
+| KNN | 0.30 | $10,400 |
 
-> ⚠️ *Replace placeholders above with actual metrics from `models/model_comparison_summary.csv` after training.*
-
-The best-performing model is selected automatically at runtime and loaded directly into the Streamlit app via `models/best_model.txt`.
+Random Forest achieved the strongest overall performance with the lowest RMSE and highest R², and was selected as the final model for deployment, with XGBoost performing comparably.
 
 ---
 
