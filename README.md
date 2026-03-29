@@ -22,11 +22,7 @@ The best-performing model is selected automatically at runtime and loaded direct
 
 ## Demo
 
-> 📸 *Insert Streamlit app screenshot here*
-
-```
-[ screenshot placeholder ]
-```
+▶️ [Watch the demo video](https://drive.google.com/file/d/1OBQNgwLiRIk7V8-hD-_pUAZGlSLgfH-K/view)
 
 ---
 
